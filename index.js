@@ -22,8 +22,8 @@ const plugin = module.exports;
 
 let client = null;
 const settings = {
-  accessKeyId: false,
-  secretAccessKey: false,
+  accessKeyId: process.env.OSS_ACCESS_KEY_ID || undefined,
+  secretAccessKey: process.env.OSS_ACCESS_KEY_SECRET || undefined,
   region: process.env.OSS_DEFAULT_REGION || "oss-cn-hongkong",
   bucket: process.env.OSS_UPLOADS_BUCKET || undefined,
   path: process.env.OSS_UPLOADS_PATH || undefined,
@@ -49,14 +49,14 @@ function fetchSettings(callback) {
       settings.accessKeyId = newSettings.accessKeyId;
       accessKeyIdFromDb = true;
     } else {
-      settings.accessKeyId = false;
+      settings.accessKeyId = process.env.OSS_ACCESS_KEY_ID || undefined;
     }
 
     if (newSettings.secretAccessKey) {
       settings.secretAccessKey = newSettings.secretAccessKey;
-      secretAccessKeyFromDb = false;
+      secretAccessKeyFromDb = true;
     } else {
-      settings.secretAccessKey = false;
+      settings.secretAccessKey = process.env.OSS_ACCESS_KEY_SECRET || undefined;
     }
 
     if (!newSettings.bucket) {
@@ -159,7 +159,7 @@ function renderAdmin(req, res) {
     forumPath: forumPath,
     region: settings.region,
     accessKeyId: (accessKeyIdFromDb && settings.accessKeyId) || "",
-    secretAccessKey: (accessKeyIdFromDb && settings.secretAccessKey) || "",
+    secretAccessKey: (secretAccessKeyFromDb && settings.secretAccessKey) || "",
   };
 
   res.render("admin/plugins/alioss-uploads", data);
@@ -205,7 +205,6 @@ function isExtensionAllowed(filePath, allowed) {
 
 plugin.uploadImage = function (data, callback) {
   const { image } = data;
-  console.log("🚀 ~ file: index.js:267 ~ file:", file instanceof File);
 
   if (!image) {
     winston.error("invalid image");

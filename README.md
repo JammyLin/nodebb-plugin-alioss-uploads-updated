@@ -5,6 +5,8 @@
 
 ### Install
 進入到nodebb目錄下，執行 `npm link path/to/plugin`
+> 1. 需先執行`./nodebb setup` 或 `./nodebb start` 安裝所需依賴後再執行**link**
+> 2. **link**之前需在當前目錄下安裝插件所需依賴(`npm i`)
 
 ### Remove
 - `npm unlink <plugin-name>` 爲移除項目下插件的安裝
