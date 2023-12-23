@@ -316,7 +316,6 @@ function uploadToOSS(filename, err, buffer, callback) {
   const ossClient = OSSClient();
   ossClient.put(ossKeyPath, buffer).then(
     (res) => {
-      // amazon has https enabled, we use it by default
       let host = `https://${settings.bucket}.${settings.region}.aliyuncs.com`;
       if (settings.host && settings.host.length > 0) {
         host = settings.host;

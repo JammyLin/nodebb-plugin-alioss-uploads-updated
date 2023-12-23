@@ -1,22 +1,65 @@
-## 阿里雲OSS上傳插件
-**plugin-name**: `nodebb-plugin-alioss-uploads`
+## 阿里雲OSS上傳插件 (Nodebb Plugin Alioss Uploads)
 
-用於將forum中上傳的文件轉爲使用阿里雲OSS，而不使用本地存儲空間
+A plugin for NodeBB to take file uploads and store them on Aliyun OSS.
 
 ### Install
-進入到nodebb目錄下，執行 `npm link path/to/plugin`
-> 1. 需先執行`./nodebb setup` 或 `./nodebb start` 安裝所需依賴後再執行**link**
-> 2. **link**之前需在當前目錄下安裝插件所需依賴(`npm i`)
+`npm install nodebb-plugin-alioss-uploads`
 
-### Remove
-- `npm unlink <plugin-name>` 爲移除項目下插件的安裝
-- `npm remove -g <plugin-name>` 爲刪除該link
-> \<plugin-name\> 爲插件名，插件名爲`package.json`下的`name`
-
-### Update
-如插件已Install並且已Active，則在代碼修改後直接`Rebuild & Restart`即可。
+| Plugin Version | Dependency     | Version Requirement     |
+| ---------------| -------------- |:-----------------------:|
+| 1.0.0          | NodeBB         | >= 3.2.0 |
 
 
-#### 參考link
+
+## Aliyun OSS Configuration
+
+You can configure this plugin via a combination of the below, for instance, you can use **environment variables**. You can also configure via the NodeBB Admin panel, which will result in the Bucket and Credentials being stored in the NodeBB Database.
+
+If you choose to use the Database storage for Credentials, then they will take precedence over Environment Variables, the full load order is:
+
+1. Database
+2. Environment Variables
+
+### Environment Variables
+
+```
+export OSS_ACCESS_KEY_ID="your_access_key_id"
+export OSS_SECRET_ACCESS_KEY="your_secret_access_key"
+export OSS_DEFAULT_REGION="oss-cn-hangzhou"
+export OSS_UPLOADS_BUCKET="your_bucket"
+export OSS_UPLOADS_HOST="host"
+export OSS_UPLOADS_PATH="path"
+```
+
+**NOTE:** Asset host is optional - If you do not specify an asset host, then the default asset host is `<bucket>.<endpoint>.aliyuncs.com`.
+
+**NOTE:** Asset path is optional - If you do not specify an asset path, then the default asset path is `/`.
+
+### Database Backed Variables
+
+From the NodeBB Admin panel, you can configure the following settings to be stored in the Database:
+
+* `bucket` — The OSS bucket to upload into
+* `host` - The base URL for the asset.  **Typcially http://\<bucket\>.\<endpoint\>.aliyuncs.com**
+* `region` - The endpoint of the OSS. **like oss-cn-hangzhou**
+* `path` - The asset path (optional)
+* `accessKeyId` — The OSS Access Key Id
+* `secretAccessKey` — The OSS Secret Access Key
+
+**NOTE: Storing your OSS Credentials in the database is bad practice, and you really shouldn't do it.**
+
+## Contributing
+Feel free to fork and pull request.
+
+## Local Install or Test
+[Official Docs](https://docs.nodebb.org/development/plugins/#linking-the-plugin)
+> 1. Recommended to install nodebb before local install
+> 2. Install plugin dependencies before link (I'm not sure that's necessary)
+
+### Update (Install Locally)
+If the plugin is already installed and active, simply click `Rebuild & Restart` after the code update.
+
+
+#### Reference
 - [NodeBB S3 Uploads Plugin](https://github.com/NodeBB-Community/nodebb-plugin-s3-uploads)
-- [NodeBB Aliyun OSS Plugin](https://github.com/ziofat/nodebb-plugin-ali-oss) (已過期版本)
+- [NodeBB Aliyun OSS Plugin](https://github.com/ziofat/nodebb-plugin-ali-oss) (Outdated version)
