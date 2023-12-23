@@ -3,7 +3,7 @@
 A plugin for NodeBB to take file uploads and store them on Aliyun OSS.
 
 ### Install
-`npm install nodebb-plugin-alioss-uploads`
+`npm install nodebb-plugin-alioss-uploads-updated`
 
 | Plugin Version | Dependency     | Version Requirement     |
 | ---------------| -------------- |:-----------------------:|

@@ -1,5 +1,5 @@
 {
-  "name": "nodebb-plugin-alioss-uploads",
+  "name": "nodebb-plugin-alioss-uploads-updated",
   "version": "1.0.0",
   "description": "A plugin for NodeBB to take file uploads and store them on ali oss",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JammyLin/nodebb-plugin-alioss-uploads.git"
+    "url": "https://github.com/JammyLin/nodebb-plugin-alioss-uploads-updated.git"
   },
   "keywords": [
     "nodebb",
@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JammyLin/nodebb-plugin-alioss-uploads/issues"
+    "url": "https://github.com/JammyLin/nodebb-plugin-alioss-uploads-updated/issues"
   },
   "dependencies": {
     "ali-oss": "~6.18.1",

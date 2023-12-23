@@ -118,13 +118,13 @@ function makeError(err) {
 }
 
 plugin.activate = function (data) {
-  if (data.id === "nodebb-plugin-alioss-uploads") {
+  if (data.id === "nodebb-plugin-alioss-uploads-updated") {
     fetchSettings();
   }
 };
 
 plugin.deactivate = function (data) {
-  if (data.id === "nodebb-plugin-alioss-uploads") {
+  if (data.id === "nodebb-plugin-alioss-uploads-updated") {
     client = null;
   }
 };

@@ -1,5 +1,5 @@
 {
-    "id": "nodebb-plugin-alioss-uploads",
+    "id": "nodebb-plugin-alioss-uploads-updated",
     "main": "./index.js",
     "hooks": [
         {
