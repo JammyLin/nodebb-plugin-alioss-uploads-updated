@@ -7,7 +7,7 @@ A plugin for NodeBB to take file uploads and store them on Aliyun OSS.
 
 | Plugin Version | Dependency     | Version Requirement     |
 | ---------------| -------------- |:-----------------------:|
-| 1.1.0          | NodeBB         | >= 3.2.0 |
+| 1.1.2          | NodeBB         | >= 3.2.0 |
 
 
 
